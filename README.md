@@ -65,7 +65,7 @@ For team member roles and responsibilities, please refer to the **Project Author
 
 Getting Started (Client App)
 ----------------------------
-# This app requires an API, you can download configure the API separately, by accessing the API setup guide in this repository: [BumbleBee Foundation API app]()
+# This app requires an API, you can download configure the API separately, by accessing the API setup guide in this repository: [BumbleBee Foundation API app](https://github.com/SamTheCopy-ninja/BumbleBeeFoundation_API.git)
 
 Follow these steps to set up and run the client application locally:
 
@@ -78,7 +78,7 @@ First, clone or download the code from the **client repository**.
 Open your terminal or Git Bash and run the following command:
 
 ```
-git clone 
+git clone https://github.com/SamTheCopy-ninja/BumbleBeeFoundation_Client.git
 ```
 
 #### Download as ZIP:
