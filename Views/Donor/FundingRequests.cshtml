@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FundingRequestViewModel>
+@{
+    ViewData["Title"] = "Companies which applied for funding";
+}
+<link href="~/css/bumblebee-theme.css" rel="stylesheet" />
+
+<h1 class="text-center donor-dashboard-title">@ViewData["Title"]</h1>
+
+<div class="form-group">
+    <input type="text" id="searchInput" class="form-control" placeholder="Search for specific company..." />
+</div>
+
+<div id="fundingRequestsList">
+    @foreach (var request in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Company ID and Name: @request.CompanyID - @request.CompanyName</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Requested Amount: @request.RequestedAmount.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-ZA"))</h6> <!-- Ensure ZAR formatting -->
+                <p class="card-text"><strong>Project Description:</strong> @request.ProjectDescription</p>
+                <p class="card-text"><strong>Project Impact:</strong> @request.ProjectImpact</p>
+                <p class="card-text"><small class="text-muted">Submitted on @request.SubmittedAt.ToString("d")</small></p>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#searchInput').on('input', function () {
+                var searchTerm = $(this).val();
+
+                if (searchTerm.length > 2) {
+                    $.ajax({
+                        url: '@Url.Action("SearchFundingRequests", "Donor")', 
+                        type: 'GET',
+                        data: { term: searchTerm },
+                        success: function (result) {
+                            console.log(result); 
+                            $('#fundingRequestsList').empty();
+
+                            
+                            $.each(result, function (i, request) {
+                                var requestHtml = '<div class="card mb-3">' +
+                                    '<div class="card-body">' +
+                                    '<h5 class="card-title">Company ID and Name: ' + request.CompanyID + ' - ' + request.CompanyName + '</h5>' +
+                                    '<h6 class="card-subtitle mb-2 text-muted">Requested Amount: ' + new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(request.RequestedAmount) + '</h6>' +
+                                    '<p class="card-text"><strong>Project Description:</strong> ' + request.ProjectDescription + '</p>' +
+                                    '<p class="card-text"><strong>Project Impact:</strong> ' + request.ProjectImpact + '</p>' +
+                                    '<p class="card-text"><small class="text-muted">Submitted on ' + new Date(request.SubmittedAt).toLocaleDateString() + '</small></p>' +
+                                    '</div></div>';
+                                $('#fundingRequestsList').append(requestHtml);
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.error("Error fetching data:", error); 
+                        }
+                    });
+                } else {
+                    $('#fundingRequestsList').empty(); 
+                    
+                }
+            });
+        });
+    </script>
+}

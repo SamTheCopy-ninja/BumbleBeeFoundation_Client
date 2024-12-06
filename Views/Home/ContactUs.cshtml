@@ -1,0 +1,56 @@
+﻿@model BumbleBeeFoundation_Client.Models.WantToBenefitModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/contactus.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-container">
+            <h3>Contact Us</h3>
+            <dl class="row">
+                <dt>Company Name:</dt>
+                <dd>Bumblebee Foundation</dd>
+                <dt>Contact Email:</dt>
+                <dd>contact@bumblebeefoundation.org</dd>
+                <dt>Office Hours:</dt>
+                <dd>Monday - Friday: 9:00 AM - 5:00 PM</dd>
+                <dd>Saturday: 10:00 AM - 3:00 PM</dd>
+                <dd>Sunday: Closed</dd>
+                <dt>Social Media:</dt>
+                <dd>Facebook: facebook.com/bumblebeefoundation</dd>
+                <dd>Twitter: bumblebeefoundation</dd>
+                <dd>LinkedIn: linkedin.com/company/bumblebeefoundation</dd>
+            </dl>
+        </div>
+    </div>
+
+    @section Scripts {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

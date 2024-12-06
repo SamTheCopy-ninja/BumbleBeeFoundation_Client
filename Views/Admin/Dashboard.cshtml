@@ -1,0 +1,86 @@
+﻿@model BumbleBeeFoundation_Client.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<link href="~/css/bumblebee-theme.css" rel="stylesheet" />
+
+
+<h1 class="text-center donation-report-title">Admin Dashboard</h1>
+
+<div class="row">
+    
+    <div class="col-md-8">
+        
+        <div class="row">
+            
+            <div class="col-md-6 mb-4">
+                <div class="card" style="background-color: #fffbea; border-color: #388e3c;">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Total Users</h5>
+                        <p class="card-text display-4 text-center">@Model.TotalUsers</p>
+                        <a asp-action="UserManagement" asp-controller="Admin" class="btn btn-success w-100">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card" style="background-color: #fffbea; border-color: #388e3c;">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Total Companies</h5>
+                        <p class="card-text display-4 text-center">@Model.TotalCompanies</p>
+                        <a asp-action="CompanyManagement" asp-controller="Admin" class="btn btn-success w-100">Manage Companies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+           
+            <div class="col-md-6 mb-4">
+                <div class="card" style="background-color: #fffbea; border-color: #388e3c;">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Total Donations</h5>
+                        <p class="card-text display-4 text-center">@Model.TotalDonations</p>
+                        <a asp-action="DonationManagement" asp-controller="Admin" class="btn btn-success w-100">Manage Donations</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card" style="background-color: #fffbea; border-color: #388e3c;">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Total Funding Requests</h5>
+                        <p class="card-text display-4 text-center">@Model.TotalFundingRequests</p>
+                        <a asp-action="FundingRequestManagement" asp-controller="Admin" class="btn btn-success w-100">Manage Funding</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="col-md-4">
+       
+        <div class="card" style="background-color: #fffbea; border-color: #388e3c;">
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col">
+                        <a asp-action="Documents" asp-controller="Admin" class="btn btn-success w-100">View Documents</a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a asp-action="DonationReport" asp-controller="Admin" class="btn btn-success w-100">Access Donations Report</a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a asp-action="FundingRequestReport" asp-controller="Admin" class="btn btn-success w-100">Access Project Funds Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
